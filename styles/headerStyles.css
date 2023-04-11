@@ -1,9 +1,15 @@
-
 :root{
     /* Colors */
     --primary_color:#4d148c;
     --bg-color:#eef1f6;
+    --black:#000000;
     --white:#EEF1F6;
+    --gray:#4d4d4d;
+    --dark_gray:#212121;
+    --border-color:#d8d8d8;
+
+    /* Box-Shadows */
+    --light-shadow:rgba(0,0,0,0.16 );
 
     /* Font-Sizes */
     --normal_font:1rem;
@@ -18,6 +24,7 @@
 }
 body{
     font-family: "dm sans";
+    /* font-family: "object sans"; */
     background-color:var( --bg-color);
 }
 textarea {
@@ -29,7 +36,7 @@ a{
 li{
     list-style: none;
 }
-header{
+header,footer{
     padding: 0 3em;
 }
 input::placeholder,textarea::placeholder, select{
@@ -37,8 +44,10 @@ input::placeholder,textarea::placeholder, select{
     font-size: 18px;
     font-weight: bold;
     font-style: normal;
-    color: #4d4d4d;
+    color: var(--gray);
 }
+
+/* Navbar-Styles Start */
 .navbar{
     display: flex;
     align-items: center;
@@ -62,12 +71,15 @@ input::placeholder,textarea::placeholder, select{
     justify-content:center;
     column-gap:2em;
 }
+
 .menu_wrapper > ul > li > a {
     font-size: var(--normal_font);
     font-weight: bold;
     line-height: 1rem;
     font-style: var(--normal);
-    color: var(--primary_color);
+    color: var(--black);
+    transition:all 0.5s;
+    position: relative;
 }
 .nav-btn_wrapper{
     width: 227px;
@@ -78,20 +90,52 @@ input::placeholder,textarea::placeholder, select{
     display: flex;
     align-items:center;
     justify-content:center;
-}
-.nav-btn_wrapper > a {
+    position: relative;
+    overflow: hidden;
     font-size: var(--normal_font);
     font-weight: bold;
     line-height: 1rem;
     font-style: var(--normal);
     color: var(--primary_color);
+    transition: all 1s;
 }
+/* .nav-btn_wrapper > a {
+    font-size: var(--normal_font);
+    font-weight: bold;
+    line-height: 1rem;
+    font-style: var(--normal);
+    color: var(--primary_color);
+    transition: all 1s;
+} */
+.nav-btn_wrapper::before{
+    content:"";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #4d148c;
+    transition: all 0.8s;
+    z-index: -1;
+    transform:translateX(-100%);
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    -o-transition: all 0.8s;
+}
+.nav-btn_wrapper:hover::before{
+    transform:translateX(0);
+}
+.nav-btn_wrapper:hover{
+    color:white;
+    cursor: pointer;
+}
+/* Navbar-Styles End */
 
-/* Landing section */
+/* Landing_Section Styles Start */
 .landing_main_container{
     display: flex;
     margin-top: 2em;
-    /* column-gap:10em; */
 }
 .left_container{
     display: flex;
@@ -99,7 +143,6 @@ input::placeholder,textarea::placeholder, select{
     justify-content:center;
     text-align:left;
     width: 100%;
-    /* border:1px solid red; */
 }
 .left_container > h2{
     width: 682px;
@@ -108,7 +151,7 @@ input::placeholder,textarea::placeholder, select{
     font-weight: 400;
     line-height: 72px;
     font-style: normal;
-    color: #000000;
+    color: var(--black);
     margin-bottom: 0.2em;
 }
 .left_container > p{
@@ -119,10 +162,9 @@ input::placeholder,textarea::placeholder, select{
     font-weight: 400;
     line-height: 40px;
     font-style: normal;
-    color: #212121;
+    color:var(--dark_gray);
 }
 .right_container{
-     /* border:1px solid red; */
      width: 100%;
      display: flex;
      flex-direction: column;
@@ -137,10 +179,10 @@ input::placeholder,textarea::placeholder, select{
 .right_inner_wrapper{
     width: 448px;
     height: 471px;
-    filter: drop-shadow(0px 3px 20px rgba(0,0,0,0.16 ));
-    background: #ffffff;
+    filter: drop-shadow(0px 3px 20px var(--light-shadow));
+    background: var(--white);
     padding: 3em 2em 0em 2em;
-    /* height: 100%; */
+    -webkit-filter: drop-shadow(0px 3px 20px var(--light-shadow));
 }
 .right_inner_wrapper > h4{
     width: 329px;
@@ -151,14 +193,13 @@ input::placeholder,textarea::placeholder, select{
     line-height: 40px;
     font-style: normal;
     text-align: left;
-    color: #4d148c;
+    color: var(--primary_color);
 }
 .amount_form_wrapper{
     margin-top:1.5em;
     display: flex;
     flex-direction: column;
     row-gap:1em;
-
 }
 .amount_form_wrapper{
 
@@ -174,8 +215,8 @@ input::placeholder,textarea::placeholder, select{
 .top_input_wrapper >input{
     width: 117px;
     height: 63px;
-    border:2px solid #d8d8d8;
-    background: #ffffff;
+    border:2px solid var(--border-color);
+    background: var(--white);
     padding: 1em;
     text-align: center;
 }
@@ -185,16 +226,16 @@ input::placeholder,textarea::placeholder, select{
 .middle_input_wrapper > input,select{
     width: 181px;
     height: 63px;
-    order:2px solid #d8d8d8;
-    background: #ffffff;
+    border:2px solid  var(--border-color);
+    background: var(--white);
     padding: 1em;
     text-align: center;
 }
 .bottom_input_wrapper >textarea{
     width: 385px;
     height: 120px;
-    order:2px solid #d8d8d8;
-    background: #ffffff;
+    border:2px solid  var(--border-color);
+    background: var(--white);
     padding: 1em;
 }
 .payment_option_wrapper{
@@ -208,7 +249,7 @@ input::placeholder,textarea::placeholder, select{
 .donate_now-btn{
     width: 448px;
     height: 71px;
-    background: #4d148c;
+    background: var(--primary_color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -219,5 +260,6 @@ input::placeholder,textarea::placeholder, select{
     font-weight: bold;
     line-height: 92px;
     font-style: normal;
-    color: #ffffff;
+    color: var(--white);
 }
+/* Landing_Section Styles End */
